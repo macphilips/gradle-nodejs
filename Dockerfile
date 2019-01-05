@@ -5,10 +5,12 @@ LABEL application="gradle-node"
 ENV NODE_VERSION 11.6.0
 USER root
 
+RUN apk add vim wget
+
 RUN \
-apt-get update && \
+apk update && \
 # install utilities
-apt-get install -y \
+apk add \
 wget \
 curl \
 vim \
@@ -31,12 +33,12 @@ npm install -g yarn && \
 # install yeoman
 # npm install -g yo && \
 # cleanup
-apt-get clean && \
-rm -rf \
-# /home/jhipster/.cache/ \
-/var/lib/apt/lists/* \
-/tmp/* \
-/var/tmp/*
+#apk clean && \
+#rm -rf \
+## /home/jhipster/.cache/ \
+#/var/lib/apt/lists/* \
+#/tmp/* \
+#/var/tmp/*
 
 USER gradle
 
